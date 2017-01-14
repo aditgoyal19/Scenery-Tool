@@ -43,7 +43,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(ProjectDir)external libraries\lib\gl\Win32;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\CND\Tools\glfont2;C:\CND\Tools\glm;$(ProjectDir)external libraries\include;C:\CND\Tools\pugixml-1.5\src;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)Tools\glfont2;$(ProjectDir)Tools\glm;$(ProjectDir)external libraries\include;$(ProjectDir)Tools\pugixml-1.5\src;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -166,81 +166,56 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  
-   
   <!--Property 1-->
   <PropertyGroup>
-	<BuildDir>..\..\Project_04</BuildDir>
+    <BuildDir>..\..\Project_04</BuildDir>
   </PropertyGroup>
-  
-<!--Property 2-->
+  <!--Property 2-->
   <PropertyGroup>
-  <MyName>Adit Goyal</MyName>
-    <ExeDir>..\Release</ExeDir><!--For Exe Copying-->
-</PropertyGroup>
-  
+    <MyName>Adit Goyal</MyName>
+    <ExeDir>..\Release</ExeDir>
+    <!--For Exe Copying-->
+  </PropertyGroup>
   <!--Property 3-->
-<PropertyGroup>
-  <MyMessage>Creating the Directory for Project build</MyMessage>
-</PropertyGroup>
-
-<!--Target tasks-->
-  
+  <PropertyGroup>
+    <MyMessage>Creating the Directory for Project build</MyMessage>
+  </PropertyGroup>
+  <!--Target tasks-->
   <!--On Condition Release Configuration-->
-
   <!--Depends On Target Applied-->
-  
   <Target Name="Project_04" Condition="'$(Configuration)'=='Release'" DependsOnTargets="TagetCondition">
-  <!--Displaying the Property 3 -->
- 
-    <Message Text="$(MyMessage)"/>
-  
+    <!--Displaying the Property 3 -->
+    <Message Text="$(MyMessage)" />
     <!--Creating the directory from path Property 1-->
-      <MakeDir
-    Directories="$(BuildDir)"/>
-  
-
-<CreateItem Include="ply\**\*.*">
-    		<Output TaskParameter="Include" ItemName="myPly" />
-    	</CreateItem>
-		<Copy SourceFiles="@(myPly)"
-    			DestinationFiles="@(myPly->'$(BuildDir)\ply\%(RecursiveDir)%(Filename)%(Extension)')" />
-		
-  <!--Item 2-Copying the shader files-->
-  <CreateItem Include="shaders\**\*.*">
-    		<Output TaskParameter="Include" ItemName="myShaders" />
-    	</CreateItem>
-		<Copy SourceFiles="@(myShaders)"
-    			DestinationFiles="@(myShaders->'$(BuildDir)\shaders\%(RecursiveDir)%(Filename)%(Extension)')" />
-		
-<!--Item 3-Copying the Xml and Font files-->
-  <CreateItem Include="XmlFiles\**\*.*">
-    		<Output TaskParameter="Include" ItemName="myXmlAndFont" />
-    	</CreateItem>
-		<Copy SourceFiles="@(myXmlAndFont)"
-    			DestinationFiles="@(myXmlAndFont->'$(BuildDir)\XmlFiles\%(RecursiveDir)%(Filename)%(Extension)')" />
-		
-<!--Item 4-Copying the dll files-->
-  <CreateItem Include="*.dll">
-    		<Output TaskParameter="Include" ItemName="myDlls" />
-    	</CreateItem>
-		<Copy SourceFiles="@(myDlls)"
-    			DestinationFiles="@(myDlls->'$(BuildDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-		
-  <!--Item 5-Copying the exe files-->
-  <CreateItem Include="$(ExeDir)\*.exe">
-    		<Output TaskParameter="Include" ItemName="myDlls" />
-    	</CreateItem>
-		<Copy SourceFiles="@(myDlls)"
-    			DestinationFiles="@(myDlls->'$(BuildDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
-</Target>
-
-<!--Target Condition for Depends on target-->
-<Target Name="TagetCondition">
-  
-  <!--Property 2-1 used here-->
-<Message Text="My Name Is $(MyName)"/>
-
-</Target>
-
+    <MakeDir Directories="$(BuildDir)" />
+    <CreateItem Include="ply\**\*.*">
+      <Output TaskParameter="Include" ItemName="myPly" />
+    </CreateItem>
+    <Copy SourceFiles="@(myPly)" DestinationFiles="@(myPly->'$(BuildDir)\ply\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!--Item 2-Copying the shader files-->
+    <CreateItem Include="shaders\**\*.*">
+      <Output TaskParameter="Include" ItemName="myShaders" />
+    </CreateItem>
+    <Copy SourceFiles="@(myShaders)" DestinationFiles="@(myShaders->'$(BuildDir)\shaders\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!--Item 3-Copying the Xml and Font files-->
+    <CreateItem Include="XmlFiles\**\*.*">
+      <Output TaskParameter="Include" ItemName="myXmlAndFont" />
+    </CreateItem>
+    <Copy SourceFiles="@(myXmlAndFont)" DestinationFiles="@(myXmlAndFont->'$(BuildDir)\XmlFiles\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!--Item 4-Copying the dll files-->
+    <CreateItem Include="*.dll">
+      <Output TaskParameter="Include" ItemName="myDlls" />
+    </CreateItem>
+    <Copy SourceFiles="@(myDlls)" DestinationFiles="@(myDlls->'$(BuildDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!--Item 5-Copying the exe files-->
+    <CreateItem Include="$(ExeDir)\*.exe">
+      <Output TaskParameter="Include" ItemName="myDlls" />
+    </CreateItem>
+    <Copy SourceFiles="@(myDlls)" DestinationFiles="@(myDlls->'$(BuildDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+  <!--Target Condition for Depends on target-->
+  <Target Name="TagetCondition">
+    <!--Property 2-1 used here-->
+    <Message Text="My Name Is $(MyName)" />
+  </Target>
 </Project>
