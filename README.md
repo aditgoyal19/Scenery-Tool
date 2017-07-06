@@ -1,11 +1,9 @@
-# Scenery-Tool
-Scenery tool created in OpenGl 4.0 and C++ and saving the files in XML.
+# SCENERY TOOL
 
-Models used are Ply models with color and lighting effect from OpenGL shader and point lights.
+## Summary
+Scenery tool created in OpenGl 4.0 and C++ and saving the files in XML.Models used are Ply models with color and lighting effect from OpenGL shader and point lights.Localization is done by using four different languages and OpenGL font tool.
 
-Localization is done by using four different languages and OpenGL font tool.
-
-OBJECTIVE-> 
+## OBJECTIVE 
 
 This tool was created to ease the scene generation in the future game projects.
 
@@ -17,12 +15,11 @@ Files can be saved with updated values and can be integrated into further projec
 This scenery tool can be expanded to include many other attributes to simplify it.
 By opening the solution and running it in Release mode,
 the console option will show the loading of all three files 
-if one of them is not present then Program will not continue
-
+if one of them is not present then Program will not continue.
 
 In this solution There are three files as was mentioned to be named as easy.xml,Medium.xml and hard.xml
 
-WORKINGS->
+## WORKINGS
 
 1. A Xml file is generated containing four different languages and 20 different strings each as mentioned.
 
@@ -43,7 +40,7 @@ this is shown in the language being used previously.
 
 
 
-The Summarised Keys are:::
+### The Summarised Keys are:::
 
 1-3: On console for choosing the file to render
 1-4: On graphical display about the language which can be selected by the user
